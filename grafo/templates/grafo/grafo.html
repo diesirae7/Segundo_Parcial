@@ -1,0 +1,56 @@
+{% extends 'templates/home/home.html' %}
+<body>
+    {% block contenido %}
+
+<p>Ingresa un umbral para poder calcular las distancias </p>
+<br>
+<br>
+<form action="{% url  'procesamiento'  %}" method="get">
+    {% csrf_token %}
+    <label for="umbral">Umbral</label>
+    <input type="text"name="umbral" id="umbral">
+<button type="submit" name="miboton">Iniciar Procesamiento</button>
+</form>
+<br>
+<br>
+<br>
+<ul>
+    <h1>Matriz de distancias</h1>
+    <table>
+        <thead>
+            <tr>
+                <td style="border: 2px dotted rgb(0, 140, 255);">Distancias</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for elementos in ca %}
+            <tr>
+                <td style="border: 2px dotted rgb(0, 140, 255);">{{elementos}}</td>
+            </tr>
+           
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+</ul>
+<ul>
+    <h1>Matriz de distancias dependiendo el Umbral</h1>
+    <table>
+        <thead>
+            <tr>
+                <td style="border: 2px dotted rgb(0, 140, 255);">Distancias</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for elementos in tabla %}
+            <tr>
+                <td style="border: 2px dotted rgb(0, 140, 255);">{{elementos}}</td>
+            </tr>
+           
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+</ul>   
+{% endblock contenido %}
+</body>

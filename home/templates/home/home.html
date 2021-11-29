@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'style2.css'%}">
+<link rel="icon" href="https://img.uefa.com/imgml/favicon/comp/ucl.ico">
+    <title>Pagina Principal</title>
+</head>
+<!-- Menu sencillo -->
+<body>
+    <!-- <header> -->
+        <!-- <nav class="navegador">
+            <ul class="Menu">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'Sintactico:patrones' %}">Sintactico</a></li>
+                <li><a href="{% url  'grafo' %}">Grafos</a></li>
+                <li><a href="{% url  'about:about' %}">Acerca De</a></li>
+            </ul>
+        </nav> -->
+        <!-- <div class="navbar">MENU
+            <ul class="menu">
+                <li><a href="{% url 'home' %}" class="h"><img src="https://cdn-icons-png.flaticon.com/512/553/553376.png" alt="" class="icono"></a></li>
+                <li><a href="{% url 'Sintactico:patrones' %}" class="s"></a></li>
+                <li><a href="{% url  'grafo' %}" class="g"></a></li>
+                <li><a href="{% url  'about:about' %}" class="a"></a></li>
+            </ul>
+        </div> -->
+    <!-- </header> -->
+    <header>
+        <div class="contenedor" id="uno">
+            <a href="{% url 'home' %}" ><img src="https://cdn-icons-png.flaticon.com/512/553/553376.png" class="icono"></a><p class="texto">Home</p>
+        </div>
+        <div class="contenedor" id="dos">
+            <a href="{% url 'Sintactico:patrones' %}" ><img src="https://cdn-icons.flaticon.com/png/512/3494/premium/3494579.png" class="icono"></a><p class="texto">Informaciòn</p>
+        </div>
+        <div class="contenedor" id="tres">
+            <a href="{% url  'grafo' %}" ><img src="https://cdn-icons-png.flaticon.com/512/4525/4525943.png" class="icono"></a><p class="texto">Grafo</p>
+        </div>
+        <div class="contenedor" id="cuatro">
+            <a href="{% url  'about:about' %}" ><img src="https://cdn-icons-png.flaticon.com/512/16/16410.png" class="icono"></a><p class="texto">Galeria</p>
+        </div>
+    </header>
+    {% block contenido %}
+    <!-- <form action="{% url  'procesamiento'  %}" method="get">
+        {% csrf_token %}
+        <label for="umbral">Umbral</label>
+        <input type="text"name="umbral" id="umbral">
+    <button type="submit" name="miboton">Iniciar Procesamiento</button>
+</form> -->
+    <!-- <img src="https://wallpapersflix.com/wp-content/uploads/2021/08/Lionel-Messi-PSG-Wallpaper-HD.jpg" class="ImgP"> -->
+    
+<!--     
+     1er tipo de imprimir consultas 
+    {{lista}}
+    2do tipo de imprimir consultas 
+    <ul>
+        {% for elemento in lista %}
+        <li>{{elemento}}</li>
+        {% endfor %}
+    </ul>
+    Consulta especifica 
+    <ul>
+        <h1>Consulta Especifica</h1>
+        {% for elemento in lista %}
+        <li>{{elemento.Temperatura }}--{{elemento.Color}}--{{elemento.Inflamation}}</li>
+        {% endfor %}
+    </ul> -->
+    <!--Consulta en tabla  -->
+    
+        
+
+     
+    <ul>
+        <h1>Consulta en tabla</h1>
+        <table>
+            <thead>
+                <tr>
+                    <td>Id</td>
+                    <td>Temperatura</td>
+                    <td>Color</td>
+                    <td>Inflamacion</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for elemento in lista %}
+                <tr>
+                    <td style="border: 2px dotted rgb(0, 140, 255);">{{elemento.pk}}</td>
+                    <td style="border: 2px dotted black;">{{elemento.Temperatura }}</td>
+                    <td style="border: 2px solid green;">{{elemento.Color}}</td>
+                    <td style="border: 2px dotted red;">{{elemento.Inflamation}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <br>
+    </ul>
+    <!-- -------------------------Filto------------------ -->
+    <ul>
+        <h1>Consulta en tabla Filtro</h1>
+        <p>Lista -----> Color menor a 20</p>
+        <table>
+            <thead>
+                <tr>
+                    <td>Id</td>
+                    <td>Temperatura</td>
+                    <td>Color</td>
+                    <td>Inflamacion</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for elemento in L2 %}
+                <tr>
+                    <td style="border: 2px dotted rgb(0, 140, 255);">{{elemento.pk}}</td>
+                    <td style="border: 2px dotted black;">{{elemento.Temperatura }}</td>
+                    <td style="border: 2px solid green;">{{elemento.Color}}</td>
+                    <td style="border: 2px dotted red;">{{elemento.Inflamation}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <br>
+    </ul>
+    <ul>
+        <h1>Consulta en tabla Filtro</h1>
+        <p>Lista -----> Color mayor a 20</p>
+        <table>
+            <thead>
+                <tr>
+                    <td>Id</td>
+                    <td>Temperatura</td>
+                    <td>Color</td>
+                    <td>Inflamacion</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for elemento in L1 %}
+                <tr>
+                    <td style="border: 2px dotted rgb(0, 140, 255);">{{elemento.pk}}</td>
+                    <td style="border: 2px dotted black;">{{elemento.Temperatura }}</td>
+                    <td style="border: 2px solid green;">{{elemento.Color}}</td>
+                    <td style="border: 2px dotted red;">{{elemento.Inflamation}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <br>
+    </ul>
+    <!-- PARA NO REPETIR EL MISMO CODIGO TRES VECES CON LOS FILTROS  -->
+    <ul>
+        <h1>Consulta en tabla 1 VEZ PARA LAS 3 LISTAS</h1>
+        <p>3 Listas</p>
+
+        {% for lista in MISLISTAS %}
+
+        <table>
+            <thead>
+                <tr>
+                    <td>Id</td>
+                    <td>Temperatura</td>
+                    <td>Color</td>
+                    <td>Inflamacion</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for elemento in lista %}
+                <tr>
+                    <td style="border: 2px dotted rgb(0, 140, 255);">{{elemento.pk}}</td>
+                    <!-- CONDICION PARA VER CUAL ESTA ABAJO DE 20 DE UN COLOR  -->
+
+                    {% if elemento.Temperatura < 20 %}
+                    <td style="border: 2px dotted black;">{{elemento.Temperatura }}</td>
+                    {% else %}
+                    <td style="border: 2px dotted rgb(111, 0, 255);">{{elemento.Temperatura }}</td>
+                    {% endif %}
+                    <td style="border: 2px solid green;">{{elemento.Color}}</td>
+                    <td style="border: 2px dotted red;">{{elemento.Inflamation}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <br>
+    </ul>
+    {% endfor %}
+  <!-- <p>-------------------------Prueba------------------</p>
+    <ul>
+        <h1>Matriz de distancias</h1>
+        <table>
+            <thead>
+                <tr>
+                    <td style="border: 2px dotted rgb(0, 140, 255);">Distancias</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for elementos in ca %}
+                <tr>
+                    <td style="border: 2px dotted rgb(0, 140, 255);">{{elementos}}</td>
+                </tr>
+               
+                {% endfor %}
+            </tbody>
+        </table>
+        <br>
+    </ul>
+    <p>-------------------------Prueba2------------------</p>
+    <ul>
+        <h1>Matriz de distancias dependiendo el Umbral</h1>
+        <table>
+            <thead>
+                <tr>
+                    <td style="border: 2px dotted rgb(0, 140, 255);">Distancias</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for elementos in tabla %}
+                <tr>
+                    <td style="border: 2px dotted rgb(0, 140, 255);">{{elementos}}</td>
+                </tr>
+               
+                {% endfor %}
+            </tbody>
+        </table>
+        <br>
+    </ul> -->
+    <footer>
+        <h2>UEFA Champions League</h2>
+        <div class="fo">
+            <a href="https://www.facebook.com/ChampionsLeague/"><img src="https://cdn-icons.flaticon.com/png/512/3665/premium/3665895.png?token=exp=1638163663~hmac=6a378d9e1b93533b7dfaf2cfa34d1766" class="redes"></a>
+            <a href="https://www.instagram.com/championsleague/"><img src="https://cdn-icons-png.flaticon.com/512/1419/1419647.png" class="redes"></a>
+            <a href="https://twitter.com/UEFAcom_es"><img src="https://cdn-icons-png.flaticon.com/512/25/25347.png" class="redes"></a>
+        </div>
+    </footer>
+    {% endblock contenido %}
+</body>
+</html>
